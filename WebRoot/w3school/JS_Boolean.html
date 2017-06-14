@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JavaScript Boolean 对象</title>
+</head>
+<body>
+	<div id="intro">
+		<h2>Boolean 对象</h2>
+		<p>Boolean 对象表示两个值：&quot;true&quot; 或 &quot;false&quot;。</p>
+		<h3>创建 Boolean 对象的语法：</h3>
+		<pre>new Boolean(<i>value</i>);	<span>//构造函数</span>
+Boolean(<i>value</i>);		<span>//转换函数</span>
+		</pre>
+		<h3>参数</h3>
+		<p>
+			参数 <i>value</i> 由布尔对象存放的值或者要转换成布尔值的值。
+		</p>
+		<h3>返回值</h3>
+		<p>当作为一个构造函数（带有运算符 new）调用时，Boolean() 将把它的参数转换成一个布尔值，并且返回一个包含该值的 Boolean 对象。</p>
+		<p>如果作为一个函数（不带有运算符 new）调用时，Boolean() 只将把它的参数转换成一个原始的布尔值，并且返回这个值。</p>
+		<p class="note">
+			<span>注释：</span>如果省略 value 参数，或者设置为 0、-0、null、&quot;&quot;、false、undefined 或 NaN，则该对象设置为 false。否则设置为 true（即使 value 参数是字符串 &quot;false&quot;）。
+		</p>
+	</div>
+</body>
+</html>

@@ -3,46 +3,45 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>控制div属性</title>
-<style>
-#outer {
-	width: 500px;
+<style type="text/css">
+div {
 	margin: 0 auto;
 	padding: 0;
+}
+
+#outer {
 	text-align: center;
 }
 
 #div1 {
+	margin: 10px auto;
 	width: 100px;
 	height: 100px;
-	background: black;
-	margin: 10px auto;
-	display: block;
+	background-color: black;
 }
 </style>
-<script>
-	var changeStyle = function(elem, attr, value) {
-		elem.style[attr] = value
-	};
+<script type="text/javascript">
 	window.onload = function() {
-		var oBtn = document.getElementsByTagName("input");
-		var oDiv = document.getElementById("div1");
-		var oAtt = [ "width", "height", "background", "display", "display" ];
-		var oVal = [ "200px", "200px", "pink", "none", "block" ];
-
-		for ( var i = 0; i < oBtn.length; i++) {
-			oBtn[i].index = i;
-			oBtn[i].onclick = function() {
-				this.index == oBtn.length - 1 && (oDiv.style.cssText = "");
-				changeStyle(oDiv, oAtt[this.index], oVal[this.index])
+		var oInputArr = document.getElementsByTagName("input")
+		var oDiv = document.getElementById("div1")
+		var oAttrName = [ "width", "height", "background-color", "display", "display" ]
+		var oAttrValue = [ "200px", "200px", "red", "none", "block" ]
+		for ( var i = 0; i < oInputArr.length; i++) {
+			oInputArr[i].index = i;
+			oInputArr[i].onclick = function() {
+				// false && 不执行
+				// true || 不执行
+				(this.index == oInputArr.length - 1) && (oDiv.style = "")
+				oDiv.style[oAttrName[this.index]] = oAttrValue[this.index]
 			}
 		}
-	};
+	}
 </script>
 </head>
 <body>
 	<div id="outer">
 		<input type="button" value="变宽" /> <input type="button" value="变高" /> <input type="button" value="变色" /> <input type="button" value="隐藏" /> <input type="button" value="重置" />
-		<div id="div1"></div>
 	</div>
+	<div id="div1"></div>
 </body>
 </html>

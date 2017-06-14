@@ -33,12 +33,10 @@ a:hover {
 	width: 500px;
 	margin: 0 auto;
 	overflow: hidden;
-	zoom: 1;
 }
 
 #skin,#nav {
 	overflow: hidden;
-	zoom: 1;
 }
 
 #skin {
@@ -100,19 +98,18 @@ a:hover {
 <link href="../styles/green.css" rel="stylesheet" type="text/css" />
 <script>
 	window.onload = function() {
-		var oLink = document.getElementsByTagName("link")[0];
-		var oSkin = document.getElementById("skin").getElementsByTagName("li");
-
+		var oLink = document.getElementsByTagName("link")[0]
+		var oSkin = document.getElementById("skin").getElementsByTagName("li")
 		for ( var i = 0; i < oSkin.length; i++) {
 			oSkin[i].onclick = function() {
-				for ( var p in oSkin)
-					oSkin[p].className = "";
-				this.className = "current";
-				oLink['href'] = "../styles/" + this.id + ".css";
+				for ( var n in oSkin) {
+					oSkin[n].className = ""
+				}
+				this.className = "current"
+				oLink.href = "../styles/" + this.id + ".css"
 			}
 		}
-
-	};
+	}
 </script>
 </head>
 <body>

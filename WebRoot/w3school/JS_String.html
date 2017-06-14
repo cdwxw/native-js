@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JavaScript String 对象</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var txt = "Hello world!"
+		document.write(txt.anchor("myanchor"))
+		var str = "Hello world!"
+		document.write(str.big())
+		document.write(str.small())
+		document.write(str.blink())
+		document.write(str.bold())
+		document.write(str.charAt(1))
+		document.write(str.charCodeAt(1))
+		document.write(str.fixed())
+		document.write(str.fontcolor("Red"))
+		document.write(str.fontsize(7))
+		document.write(str.italics())
+		document.write("<br />")
+		document.write(str.indexOf("Hello") + "<br />")
+		document.write(str.indexOf("World") + "<br />")
+		document.write(str.indexOf("world"))
+		document.write("<br />")
+		document.write(str.lastIndexOf("Hello") + "<br />")
+		document.write(str.lastIndexOf("World") + "<br />")
+		document.write(str.lastIndexOf("world"))
+		document.write(str.strike())
+		document.write(str.sub())
+		document.write(str.sup())
+		document.write(str.toLowerCase())
+		document.write(str.toUpperCase())
+	</script>
+	<hr />
+	<script type="text/javascript">
+		var str1 = "Hello "
+		var str2 = "world!"
+		document.write(str1.concat(str2))
+	</script>
+	<hr />
+	<script type="text/javascript">
+		var str = "Free Web Tutorials!"
+		document.write(str.link("http://www.w3school.com.cn"))
+
+		var str = [ "Hello ", "1orld!" ];
+		document.write(str.sort(function(a, b) {
+			return a.localeCompare(b)
+		}))
+	</script>
+	<hr />
+	<script type="text/javascript">
+		var str = "Hello world!"
+		document.write(str.match("world") + "<br />")
+		document.write(str.match("World") + "<br />")
+		document.write(str.match("worlld") + "<br />")
+		document.write(str.match("world!"))
+	</script>
+	<hr />
+	<script type="text/javascript">
+		var str = "11 plus 22 equal 333"
+		document.write(str.match(/\d+/g))
+	</script>
+	<hr />
+	<script type="text/javascript">
+		var str = "Welcome to Microsoft! "
+		str = str + "We are proud to announce that Microsoft has "
+		str = str + "one of the largest Web Developers sites in the world."
+		document.write(str.replace(/Microsoft/, "W3School"))
+		document.write("<br />")
+		document.write(str.replace(/Microsoft/g, "W3School"))
+		document.write("<br />")
+	</script>
+	<hr />
+	<script>
+		text = "javaScript Tutorial"
+		document.write(text.replace(/javascript/i, "JavaScript"))
+	</script>
+	<hr />
+	<script>
+		name = "Doe, John"
+		document.write(name.replace(/(\w+)\s*, \s*(\w+)/, "$2 $1"))
+	</script>
+	<hr />
+	<script>
+		name = '"a", "b"'
+		document.write(name.replace(/"([^"]*)"/g, "'$1'"))
+	</script>
+	<hr />
+	<script>
+		name = 'aaa bbb ccc';
+		uw = name.replace(/\b\w+\b/g, function(word) {
+			return word.substring(0, 1).toUpperCase() + word.substring(1);
+		})
+		document.write(uw)
+	</script>
+	<hr />
+	<script type="text/javascript">
+		var str = "How are you doing today?"
+		document.write(str.split(" ") + "<br />")
+		document.write(str.split("") + "<br />")
+		document.write(str.split(" ", 3) + "<br />")
+		document.write("2:3:4:5".split(":"))
+		//将返回["2", "3", "4", "5"]
+		document.write("<br />")
+		document.write("|a|b|c".split("|"))
+		//将返回["", "a", "b", "c"]
+	</script>
+	<hr />
+	<script>
+		console.info(window)
+	</script>
+	<hr />
+</body>
+</html>

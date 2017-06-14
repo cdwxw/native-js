@@ -57,15 +57,15 @@ button {
 </style>
 <script>
 	window.onload = function() {
-		var oBtn = document.getElementsByTagName("button")[0];
-		var oIme = document.getElementById("ime");
-		var oClose = document.getElementById("close");
-		var style = oIme.style;
+		var oBtn = document.getElementsByTagName("button")[0]
+		var oIme = document.getElementById("ime")
+		var oClose = document.getElementById("close")
 		oBtn.onclick = function() {
-			style.display = style.display == "block" ? "none" : "block"
-		};
+			console.info(oIme.style.display)
+			oIme.style.display = (oIme.style.display == "block" ? "none" : "block")
+		}
 		oClose.onclick = function() {
-			style.display = "none"
+			oIme.style = "display:none"
 		}
 	}
 </script>
@@ -74,12 +74,9 @@ button {
 	<div id="outer">
 		<button>输入法</button>
 		<ul id="ime">
-			<li><a href="javascript:;">手写</a>
-			</li>
-			<li><a href="javascript:;">拼音</a>
-			</li>
-			<li id="close"><a href="javascript:;">关闭</a>
-			</li>
+			<li><a href="javascript:;">手写</a></li>
+			<li><a href="javascript:;">拼音</a></li>
+			<li id="close"><a href="javascript:void(0);">关闭</a></li>
 		</ul>
 	</div>
 </body>

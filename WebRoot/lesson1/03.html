@@ -23,17 +23,16 @@ button {
 }
 </style>
 <script>
-	var myFn = function(a, b) {
-		console.info(a.value);
-		console.info(b.value)
-	};
-	window.onload = function() {
-		var oInput = document.getElementsByTagName("input");
-		var oBtn = document.getElementsByTagName("button")[0];
-		oBtn.onclick = function() {
-			myFn(oInput[0], oInput[1])
+	window.onload = function(){
+		var oTxt = document.getElementsByTagName("input")
+		var oBtn = document.getElementsByTagName("button")[0]
+		console.info(oTxt)
+		oBtn.onclick = function(){
+			for ( var i = 0; i < oTxt.length; i++) {
+				console.info(oTxt[i].value)
+			}
 		}
-	};
+	}
 </script>
 </head>
 <body>
