@@ -9,10 +9,10 @@ a{color:#fff;outline:none;text-decoration:none;}
 body{font:700 24px/1.5 Arial;}
 #calc{position:relative;width:300px;background:#000;margin:10px auto;}
 #calc p{color:#fff;text-align:right;font:12px/20px Arial;padding:0 5px;}
-#calc .f-text{border:0;width:290px;height:84px;text-align:right;font:700 50px/84px Arial;background:url(img/inputBg.jpg) repeat-x;padding:0 5px;}
-#calc ul{position:relative;overflow:hidden;zoom:1;background:url(img/bg.jpg);padding:0 0 17px 8px;}
+#calc .f-text{border:0;width:290px;height:84px;text-align:right;font:700 50px/84px Arial;background:url(http://www.fgm.cc/learn/lesson3/img/inputBg.jpg) repeat-x;padding:0 5px;}
+#calc ul{position:relative;overflow:hidden;background:url(http://www.fgm.cc/learn/lesson3/img/bg.jpg);padding:0 0 17px 8px;}
 #calc ul li{float:left;width:63px;height:41px;margin:17px 10px 0 0;}
-#calc ul li a{display:block;width:63px;height:41px;line-height:41px;text-align:center;background:url(img/btn.png) no-repeat;}
+#calc ul li a{display:block;width:63px;height:41px;line-height:41px;text-align:center;background:url(http://www.fgm.cc/learn/lesson3/img/btn.png) no-repeat;}
 #calc ul li a:hover{background-position:-63px 0;}
 #calc ul li.btn-1 a{background-position:0 -41px;}
 #calc ul li.btn-1 a:hover{background-position:-63px -41px;}
@@ -25,13 +25,90 @@ body{font:700 24px/1.5 Arial;}
 #formula{position:absolute;top:20px;background:none;border:0;font:700 12px/1.5 Arial;width:280px;padding:3px 15px 0 5px;text-align:right;}
 </style>
 <script>
-
+window.onload = function(){
+	var oCalc = document.getElementById("calc");
+	var oA = oCalc.getElementsByTagName("a");//所有【按键】
+	var oInput = oCalc.getElementsByTagName("input")[0];//输入框
+	var oFormula = document.getElementById("formula");//表达式框
+	var isNew = false;//是否开始新的计算
+	var isNum = true;//当前输入框oInput显示为数字
+	for(var i = 0;i<oA.length;i++){
+		oA[i].onclick = function(){
+			switch (this.innerText) {
+			case "c":
+				oInput.value = 0;
+				oFormula.value = "";
+				isNew = true;
+				break;
+			case "%":
+				calc("%");
+				break;
+			case "÷":
+				calc("/");
+				break;
+			case "×":
+				calc("*");
+				break;
+			case "-":
+				calc("-");
+				break;
+			case "+":
+				calc("+");
+				break;
+			case "=":
+				// 不是新的计算，表达式追加，排除连击【=】
+				if(!isNew){
+					oFormula.value += oInput.value;
+					// 将oFormula尾部的运算符全部去除
+					oFormula.value = oFormula.value.replace(/[\+\-\*\/\%]*$/,"")
+				}
+				// 表达式非空就运算eval
+				if(oFormula.value){
+					oInput.value = eval(oFormula.value);
+					oInput.value = oInput.value.substring(0,10).replace(/(NaN|undefined)/,0);
+				}
+				isNum = false;
+				isNew = true;
+				break;
+			case "."://【.】
+				// 输入框含【运算符|.】时，点击【.】就break什么也不做，否则继续执行default输入框追加【.】
+				if (oInput.value.search(/[\+\-\*\/\%\.]/) != -1)
+				break;
+			default://【数字|.】
+				// 新的计算就初始化
+				isNew && (oInput.value = 0, oFormula.value = "", isNew = false);
+				// 输入框非数字时，点击【数字|.】置零
+				if(!isNum){
+					oInput.value = 0;
+					isNum = true
+				}
+				// 输入框追加【数字|.】并去掉前缀【0|运算符】
+				oInput.value.length < 10 && (oInput.value = (oInput.value + this.innerText).replace(/^[0\+\-\*\/\%](\d)/,"$1"));
+				break;
+			}
+		}
+	}
+	// 点击【运算符】处理逻辑
+	function calc(c) {
+			if (isNew) {//表达式框初始化
+				oFormula.value = oInput.value + c;
+				isNew = false;
+			}
+			if (isNum) {//表达式框追加
+				oFormula.value += oInput.value + c;
+				isNum = false;
+			}
+			//先判断是【初始化|追加】模式，再替换尾部运算符
+			oFormula.value = oFormula.value.replace(/[\+\-\*\/\%]*$/, c);
+			oInput.value = c;
+		}
+	}
 </script>
 <title>网页计算器</title>
 </head>
 <body>
 <div id="calc">
-    <p>By - Ferris QQ:21314130</p>
+    <p>By - wxw QQ:569529989</p>
     <input class="f-text" type="text" readonly="readonly" maxlength="9" value="0" />
     <ul>
         <li class="btn-1"><a href="javascript:void(0)">c</a></li>
